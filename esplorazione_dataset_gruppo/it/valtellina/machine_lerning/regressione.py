@@ -3,14 +3,15 @@ from sklearn.linear_model import Lasso
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
 
 
 class Regressione():
 
-    def __init__(self):
+    def __init__(self, alpha_L, alpha_R):
         self.linear = LinearRegression()
-        self.lasso = Lasso(alpha=0.1) # parametro di penalizzazione
-        self.ridge = Ridge(alpha=1.0) # più alto -> coefficenti più piccoli
+        self.lasso = Lasso(alpha_L) # parametro di penalizzazione
+        self.ridge = Ridge(alpha_R) # più alto -> coefficenti più piccoli
         self.X_train = []
         self.y_train = []
         self.X_test = []
@@ -51,9 +52,18 @@ class Regressione():
         # siamo ancora livello molto uga buga
 
     def regressione_lasso(self): # aggiunge ulteriore penalizzazione per restringere coefficenti
-        self.lasso.fit(self.X_train, self.y_train)
+        
+        scaler = StandardScaler()
 
-        y_pred = self.lasso.predict(self.X_test)
+        # fit SOLO sul train
+        X_train_scaled = scaler.fit_transform(self.X_train)
+
+        # transform sul test
+        X_test_scaled = scaler.transform(self.X_test)
+
+        self.lasso.fit(X_train_scaled, self.y_train)
+
+        y_pred = self.lasso.predict(X_test_scaled)
         mse = mean_squared_error(self.y_test, y_pred)
         r2 = r2_score(self.y_test, y_pred)
 
@@ -66,9 +76,18 @@ class Regressione():
         }
 
     def regressione_ridge(self): # via di mezzo tra le 2 precedenti
-        self.ridge.fit(self.X_train, self.y_train)
 
-        y_pred = self.ridge.predict(self.X_test)
+        scaler = StandardScaler()
+        # fit SOLO sul train
+        X_train_scaled = scaler.fit_transform(self.X_train)
+
+        # transform sul test
+        X_test_scaled = scaler.transform(self.X_test)
+
+
+        self.ridge.fit(X_train_scaled, self.y_train)
+
+        y_pred = self.ridge.predict(X_test_scaled)
         mse = mean_squared_error(self.y_test, y_pred)
         r2 = r2_score(self.y_test, y_pred)
 
