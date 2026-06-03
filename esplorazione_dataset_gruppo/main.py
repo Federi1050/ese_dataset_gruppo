@@ -21,7 +21,8 @@ if __name__ == "__main__":
         # crea manager e importa csv
         ds_mn = Ds_manager()
 
-        ds_mn.clean_data()
+        lista = ["acceleration", "origin"]
+        ds_mn.clean_data(lista)
 
         # stampa dataset
         print("mostra prime 5 righe")

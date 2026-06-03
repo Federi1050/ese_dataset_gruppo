@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import zscore
 from it.valtellina.datatset.grafici import Grafici
+from sklearn.feature_selection import VarianceThreshold
 
 class Ds_manager:
     def __init__(self):
@@ -105,10 +106,25 @@ class Ds_manager:
 
         return result
 
-    def clean_data(self):
-        # togliamo le colonne non importanti per il calcolo
-        # car_name, acceleration, origin
-        pass
+    def clean_data(self, lista):
+        # togliamo le colonne non importanti per il calcolo le droppiamo a priori
+        # queste sono specificate dall'utente
+        self.data.drop_duplicates()
+
+        for colonna in lista:
+            pass
+            self.data = self.data.drop(colonna, axis=1)
+
+        threshold = 1
+        cols_to_keep = [
+            col for col in self.data.columns
+            if self.data[col].value_counts(normalize=True, dropna=False).max() <= threshold
+        ]
+        self.data = self.data[cols_to_keep]
+
+        # selector = VarianceThreshold(threshold=0.1)
+        # self.data = selector.fit_transform(self.data)
+
 
 
 
