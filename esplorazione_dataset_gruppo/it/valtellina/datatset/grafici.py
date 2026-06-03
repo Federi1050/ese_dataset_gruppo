@@ -32,6 +32,7 @@ class Grafici:
         sns.scatterplot(data=data, x=x, y=y)
         plt.title(f"{x} vs {y}")
         plt.show()
+        return fig
 
     
     def plot_box(self, data, col):

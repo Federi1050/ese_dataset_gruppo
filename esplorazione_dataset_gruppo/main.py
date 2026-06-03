@@ -68,7 +68,7 @@ if __name__ == "__main__":
         tutti quei valori in modulo superiori a 3, perchè in teoria in una norm. stand. il 99,7%  rientra in questo range
         non funziona bene con i redditi, distr. non normale
         '''
-        print(ds_mn.valori_stringhe())
+        # print(ds_mn.valori_stringhe())
 
         reg.split_data(ds_mn.data)
         print()

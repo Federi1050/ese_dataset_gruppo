@@ -34,6 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.connection_manager.executor": "Run",
     "Python.dataset_manager.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -59,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1780489791151</updated>
-      <workItem from="1780489793155" duration="8730000" />
+      <workItem from="1780489793155" duration="12217000" />
     </task>
     <servers />
   </component>
@@ -67,7 +68,8 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/esplorazione_dataset_gruppo$connection_manager.coverage" NAME="connection_manager Coverage Results" MODIFIED="1780500869313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/it/valtellina/flask" />
     <SUITE FILE_PATH="coverage/esplorazione_dataset_gruppo$dataset_manager.coverage" NAME="dataset_manager Coverage Results" MODIFIED="1780491534879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/it/valtellina/datatset" />
-    <SUITE FILE_PATH="coverage/esplorazione_dataset_gruppo$main.coverage" NAME="main Coverage Results" MODIFIED="1780498394508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/esplorazione_dataset_gruppo$main.coverage" NAME="main Coverage Results" MODIFIED="1780501853383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

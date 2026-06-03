@@ -54,11 +54,11 @@ class Regressione():
         r2 = r2_score(self.y_test, y_pred)
 
         return {
-            "predizioni": y_pred,
-            "coeff": self.linear.coef_,
-            "intercetta": self.linear.intercept_,
-            "MSE": mse,
-            "R2": r2
+            "predizioni": y_pred.tolist(),
+            "coeff": self.linear.coef_.tolist(),
+            "intercetta": float(self.linear.intercept_),
+            "MSE": float(mse),
+            "R2": float(r2)
         }
         # con i coefficenti vedo se effettivamente e' stato addestrato correttamente
         # siamo ancora livello molto uga buga
@@ -80,11 +80,11 @@ class Regressione():
         r2 = r2_score(self.y_test, y_pred)
 
         return {
-            "predizioni": y_pred,
-            "coeff": self.linear.coef_,
-            "intercetta": self.linear.intercept_,
-            "MSE": mse,
-            "R2": r2
+            "predizioni": y_pred.tolist(),
+            "coeff": self.linear.coef_.tolist(),
+            "intercetta": float(self.linear.intercept_),
+            "MSE": float(mse),
+            "R2": float(r2)
         }
 
     def regressione_ridge(self): # via di mezzo tra le 2 precedenti
@@ -104,10 +104,10 @@ class Regressione():
         r2 = r2_score(self.y_test, y_pred)
 
         return {
-            "predizioni": y_pred,
-            "coeff": self.linear.coef_,
-            "intercetta": self.linear.intercept_,
-            "MSE": mse,
-            "R2": r2
+            "predizioni": y_pred.tolist(),
+            "coeff": self.linear.coef_.tolist(),
+            "intercetta": float(self.linear.intercept_),
+            "MSE": float(mse),
+            "R2": float(r2)
         }
 
