@@ -3,3 +3,4 @@
 # libreria scikit-lern
 # praticamente la parte EDA
 # normalizzare i dati
+
