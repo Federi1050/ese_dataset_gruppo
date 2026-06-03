@@ -9,8 +9,9 @@
 from it.valtellina.datatset.dataset_manager import Ds_manager
 from it.valtellina.flask.connection_manager import Flask_connection_manager
 
-toggle = True   # true -> flask
-                # false -> console
+toggle = False
+# true -> flask
+# false -> console
 
 if __name__ == "__main__":
     if toggle:
@@ -19,6 +20,8 @@ if __name__ == "__main__":
     else:
         # crea manager e importa csv
         ds_mn = Ds_manager()
+
+        ds_mn.clean_data()
 
         # stampa dataset
         print("mostra prime 5 righe")
@@ -39,12 +42,11 @@ if __name__ == "__main__":
 
         # iniziamo a mostrare qualche grafico
         print(ds_mn.plot_correlation())
-        print(ds_mn.plot_hist()) # 1 colonna
-        print(ds_mn.plot_distribution()) # 1 colonna
-        print(ds_mn.plot_scatter()) # 1 colonna
-        print(ds_mn.plot_scatter()) # 2 colonne
-        print(ds_mn.plot_box()) # 1 colonna
-        print(ds_mn.plot_counts()) # 1 colonna
+        print(ds_mn.plot_hist("weight")) # 1 colonna
+        print(ds_mn.plot_distribution("horsepower")) # 1 colonna
+        print(ds_mn.plot_scatter("cylinders", "displacement")) # 2 colonne
+        # print(ds_mn.plot_box("")) # 1 colonna
+        print(ds_mn.plot_counts("model_year")) # 1 colonna
 
         # Individuazione outlier:
         print("Numero outlier secondo IQR:", ds_mn.outliers_iqr_per_col())

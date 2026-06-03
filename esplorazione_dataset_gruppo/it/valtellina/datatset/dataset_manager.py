@@ -1,17 +1,13 @@
-
-from ucimlrepo import fetch_ucirepo 
+from ucimlrepo import fetch_ucirepo
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import zscore
-from grafici import Grafici
-
-gf = Grafici()
+from it.valtellina.datatset.grafici import Grafici
 
 class Ds_manager:
     def __init__(self):
         self.data = self.carica_data()
+        self.gf = Grafici()
 
     def carica_data(self):
     # fetch dataset 
@@ -29,8 +25,7 @@ class Ds_manager:
         return self.data.head(righe) 
     
     def struttura(self):
-        return
-        {
+        return {
             "shape" : self.data.shape,
             "info"  : self.data.info()
         }
@@ -56,23 +51,22 @@ class Ds_manager:
         return self.data.corr(numeric_only=True)
 
     def plot_correlation(self):
-        return Grafici.plot_correlation()
+        return self.gf.plot_correlation(self.data)
 
     def plot_hist(self, col):
-        return Grafici.plot_hist(col)
+        return self.gf.plot_hist(self.data, col)
     
     def plot_distribution(self, col):
-        return Grafici.plot_distribution(col)
+        return self.gf.plot_distribution(self.data, col)
     
     def plot_scatter(self, x, y):
-        return Grafici.plot_scatter(x,y)
+        return self.gf.plot_scatter(self.data, x,y)
 
     def plot_box(self, col):
-        return Grafici.plot_box(col)
+        return self.gf.plot_box(self.data, col)
     
     def plot_counts(self, col):
-        return Grafici.plot_counts(col)
-
+        return self.gf.plot_counts(self.data, col)
 
     def outliers_iqr_per_col(self):
         result = {}
@@ -91,7 +85,6 @@ class Ds_manager:
             result[col] = outliers_count
 
         return result
-
 
     def outliers_zscore_per_col(self, threshold=3):
         result = {}
@@ -112,6 +105,10 @@ class Ds_manager:
 
         return result
 
+    def clean_data(self):
+        # togliamo le colonne non importanti per il calcolo
+        # car_name, acceleration, origin
+        pass
 
 
 
