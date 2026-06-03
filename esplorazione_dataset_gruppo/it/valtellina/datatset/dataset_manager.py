@@ -21,7 +21,6 @@ class Ds_manager:
         df = pd.concat([X, y], axis=1)
         return df
 
-
     def mostra_cont(self, righe):
         return self.data.head(righe) 
     
@@ -35,7 +34,7 @@ class Ds_manager:
         return self.data.describe()
     
     def valori_stringhe(self):
-        cat_cols = self.data.select_dtypes(include="string").columns
+        cat_cols = self.data.select_dtypes(include=["object","string"]).columns
 
         for col in cat_cols:
             print(f"\n{col} ({self.data[col].nunique()} valori unici):")
@@ -110,6 +109,11 @@ class Ds_manager:
         # togliamo le colonne non importanti per il calcolo le droppiamo a priori
         # queste sono specificate dall'utente
         self.data.drop_duplicates()
+
+        # tolgo valori NaN da horsepower
+        self.data["horsepower"] = self.data["horsepower"].fillna(
+            self.data["horsepower"].mean()
+        )
 
         for colonna in lista:
             pass

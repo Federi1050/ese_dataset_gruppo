@@ -10,6 +10,7 @@ class Flask_connection_manager():
         def home():
             return "Ciao da flask"
 
+
     def run(self, **kwargs):
         self.app.run(**kwargs)
 

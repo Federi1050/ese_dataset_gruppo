@@ -5,9 +5,12 @@
 # normalizzare i dati
 # metti anche il grafico
 # fai in modo che sia impostabile con flask per mettere di valore e la sua risposta
+# crea classe dove scegli che regressione usare, splittare il dataset, addestrarlo con quella regress
+# valuta modello
 
 from it.valtellina.datatset.dataset_manager import Ds_manager
 from it.valtellina.flask.connection_manager import Flask_connection_manager
+from it.valtellina.machine_lerning.regressione import Regressione
 
 toggle = False
 # true -> flask
@@ -20,6 +23,7 @@ if __name__ == "__main__":
     else:
         # crea manager e importa csv
         ds_mn = Ds_manager()
+        reg = Regressione()
 
         lista = ["acceleration", "origin"]
         ds_mn.clean_data(lista)
@@ -57,7 +61,21 @@ if __name__ == "__main__":
         tutti quei valori in modulo superiori a 3, perchè in teoria in una norm. stand. il 99,7%  rientra in questo range
         non funziona bene con i redditi, distr. non normale
         '''
-
         print(ds_mn.valori_stringhe())
 
-
+        reg.split_data(ds_mn.data)
+        print()
+        print("Regressione lineare")
+        risultato = reg.regressione_lineare()
+        for chiave, valore in risultato.items():
+            print(f"{chiave}: {valore}")
+        print()
+        print("Regressione lasso")
+        risultato = reg.regressione_lasso()
+        for chiave, valore in risultato.items():
+            print(f"{chiave}: {valore}")
+        print()
+        print("Regressione ridge")
+        risultato = reg.regressione_ridge()
+        for chiave, valore in risultato.items():
+            print(f"{chiave}: {valore}")
