@@ -8,14 +8,26 @@ from sklearn.preprocessing import StandardScaler
 
 class Regressione():
 
-    def __init__(self, alpha_L, alpha_R):
+    def __init__(self):
         self.linear = LinearRegression()
-        self.lasso = Lasso(alpha_L) # parametro di penalizzazione
-        self.ridge = Ridge(alpha_R) # più alto -> coefficenti più piccoli
+        self.lasso = Lasso(self.set_alpha_L()) # parametro di penalizzazione
+        self.ridge = Ridge(self.set_alpha_R()) # più alto -> coefficenti più piccoli
         self.X_train = []
         self.y_train = []
         self.X_test = []
         self.y_test = []
+
+    def set_alpha_L(self, alpha_L=0.1):
+        if alpha_L <= 0:
+            print("Il parametro alpha per la Lasso deve essere maggiore di zero")
+            alpha_L = 0.1
+        return alpha_L
+    
+    def set_alpha_R(self, alpha_R=1):
+        if alpha_R <= 0:
+            print("Il parametro alpha per la Ridge deve essere maggiore di zero")
+            alpha_R = 1.0
+        return alpha_R
 
     def split_data(self, data):
         X = data.drop(columns='mpg')
