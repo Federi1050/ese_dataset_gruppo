@@ -55,4 +55,6 @@ if __name__ == "__main__":
         non funziona bene con i redditi, distr. non normale
         '''
 
+        print(ds_mn.valori_stringhe())
+
 
