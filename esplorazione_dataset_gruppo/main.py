@@ -19,7 +19,14 @@ toggle = False
 if __name__ == "__main__":
     if toggle:
         app = Flask_connection_manager()
-        app.run(debug=True)
+        app.run(host="0.0.0.0",port="5000",debug=True)
+
+        ds_mn = Ds_manager()
+        reg = Regressione()
+
+        lista = ["acceleration", "origin"]
+        ds_mn.clean_data(lista)
+
     else:
         # crea manager e importa csv
         ds_mn = Ds_manager()
@@ -46,12 +53,12 @@ if __name__ == "__main__":
         print("Matrice di correlazione", ds_mn.correlation_matrix())
 
         # iniziamo a mostrare qualche grafico
-        print(ds_mn.plot_correlation())
-        print(ds_mn.plot_hist("weight")) # 1 colonna
-        print(ds_mn.plot_distribution("horsepower")) # 1 colonna
-        print(ds_mn.plot_scatter("cylinders", "displacement")) # 2 colonne
-        # print(ds_mn.plot_box("")) # 1 colonna
-        print(ds_mn.plot_counts("model_year")) # 1 colonna
+        ds_mn.plot_correlation()
+        ds_mn.plot_hist("weight") # 1 colonna
+        ds_mn.plot_distribution("horsepower") # 1 colonna
+        ds_mn.plot_scatter("cylinders", "displacement") # 2 colonne
+        # ds_mn.plot_box("") # 1 colonna
+        ds_mn.plot_counts("model_year") # 1 colonna
 
         # Individuazione outlier:
         print("Numero outlier secondo IQR:", ds_mn.outliers_iqr_per_col())
