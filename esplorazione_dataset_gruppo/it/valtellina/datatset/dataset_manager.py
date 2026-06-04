@@ -110,12 +110,12 @@ class Ds_manager:
         self.data.drop_duplicates()
 
         # tolgo valori NaN da horsepower
+        # se dati sono pochi rispetto tot (<5%) posso droppare la riga direttamente
         self.data["horsepower"] = self.data["horsepower"].fillna(
-            self.data["horsepower"].mean()
+            self.data["horsepower"].mean() # meglio fare mediana -> controlla
         )
 
         for colonna in lista:
-            pass
             self.data = self.data.drop(colonna, axis=1)
 
         threshold = 1
