@@ -81,8 +81,8 @@ class Regressione():
 
         return {
             "predizioni": y_pred.tolist(),
-            "coeff": self.linear.coef_.tolist(),
-            "intercetta": float(self.linear.intercept_),
+            "coeff": self.lasso.coef_.tolist(),
+            "intercetta": float(self.lasso.intercept_),
             "MSE": float(mse),
             "R2": float(r2)
         }
@@ -105,8 +105,8 @@ class Regressione():
 
         return {
             "predizioni": y_pred.tolist(),
-            "coeff": self.linear.coef_.tolist(),
-            "intercetta": float(self.linear.intercept_),
+            "coeff": self.ridge.coef_.tolist(),
+            "intercetta": float(self.ridge.intercept_),
             "MSE": float(mse),
             "R2": float(r2)
         }

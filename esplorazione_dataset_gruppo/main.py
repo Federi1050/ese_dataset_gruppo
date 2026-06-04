@@ -12,7 +12,7 @@ from it.valtellina.datatset.dataset_manager import Ds_manager
 from it.valtellina.flask.connection_manager import Flask_connection_manager
 from it.valtellina.machine_lerning.regressione import Regressione
 
-toggle = False
+toggle = True
 # true -> flask
 # false -> console
 

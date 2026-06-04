@@ -82,6 +82,11 @@ class Flask_connection_manager():
             metodo_regressione = data.get('metodo_regressione')
             alpha = data.get('alpha')
 
+            try:
+                metodo_regressione = int(metodo_regressione)
+            except ValueError:
+                return jsonify({"error": "non numerico"})
+
             # Controlli base
             if metodo_regressione not in [1, 2, 3]:
                 return jsonify({"error": "metodo_regressione deve essere 1, 2 o 3"})
@@ -107,6 +112,7 @@ class Flask_connection_manager():
 
         @self.app.route("/predizione", methods=["POST"])
         def predizione():
+            # incompleta
             data = request.get_json()
             numero = data.get('numero')
             try:

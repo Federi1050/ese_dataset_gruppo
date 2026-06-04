@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from scipy.stats import zscore
 from it.valtellina.datatset.grafici import Grafici
-from sklearn.feature_selection import VarianceThreshold
 
 class Ds_manager:
     def __init__(self):
