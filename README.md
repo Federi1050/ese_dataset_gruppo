@@ -11,4 +11,4 @@ Pulizia e esplorazione dei dati recuperati
 
 Utilizzo della libreria Flask per le comunicazioni con l'utente
 
-Dockerizzare il progetto finale in modo da averlo in un container
+Dockerizzare il progetto finale in modo da averlo in un container, l'immagine del container e' scaricabile [qui](https://hub.docker.com/r/f3d3ri/analisi-mpg-csv)
